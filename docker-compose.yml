@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"  # Expose the React app on port 3000
+    depends_on:
+      - server
+    command: ["serve", "-s", "build"]
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "5000:5000"  # Expose the Express server on port 5000
